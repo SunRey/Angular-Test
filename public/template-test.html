@@ -19,6 +19,12 @@
         <ol>
             <li ng-repeat="letter in ['A', 'B', 'C', 'D', 'E', 'F']">{{ letter | lowercase }}</li>
         </ol>
+
+        <ul>
+            <li ng-repeat="picture in ['just_alerting_you.jpg', 'sudo-sandwhich.jpg', 'standards.png']">
+                <img  ng-src="/img/{{ picture }}">
+            </li>
+        </ul>
         <script src="js/angular.min.js"></script>
         <script src="js/templateTest.js"></script>
     </body>
