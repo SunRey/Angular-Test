@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <style>
+
+        </style>
+    </head>
+    <body ng-app="controllerTest">
+        <div ng-controller='CartController as cart'>
+            <div class="well">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <td>Quantity</td>
+                            <td>Item</td>
+                            <td>Price</td>
+                            <td>Line Item</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat='item in cart.items'>
+                            <td class='row'>
+                                <input ng-model='item.quantity' type='number' value="{{ item.quantity }}"></td>
+                            <td>{{ item.tool }}</td>
+                            <td>{{ item.price | currency}}</td>
+                            <td>{{ item.quantity * item.price | currency }}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Total:</td>
+                            <td>{{ cart.items }}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <form ng-submit='cart.addItem()' name='cartForm'>
+                <label for='tool'>Enter New Tool</label>
+                <input name='tool' type='text' ng-model='cart.newItem.tool'>
+                <label for='price'>Price</label>
+                <input name='price' type='number' ng-model='cart.newItem.price'>
+                <button type='submit'>Add Tool</button>
+            </form>
+        </div>
+
+        <script src="js/angular.min.js"></script>
+        <script src="js/controllerTest.js"></script>
+    </body>
+</html>
